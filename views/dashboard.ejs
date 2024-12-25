@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        /* Internal CSS for styling and animations */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: #f5f8fa;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #1da1f2;
+            padding: 1rem;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .sidebar a {
+            display: block;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .content {
+            flex-grow: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        .content h1 {
+            color: #1da1f2;
+            margin-bottom: 1rem;
+        }
+        .post-form {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+       
+        .post-form button {
+            background: #1da1f2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .post-form button:hover {
+            background: #0d95e8;
+        }
+        .posts, .profile {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .post {
+            border-bottom: 1px solid #ccc;
+            padding: 1rem 0;
+        }
+        .post:last-child {
+            border-bottom: none;
+        }
+        .logout{
+             
+width: 100px;  
+height: 100px;  
+border: 5px solid red;  
+display: grid;  
+}  
+.logout {  
+background-color: lightblue;  
+color: black;  
+font-size: 25px;  
+margin: auto;  
+}  
+
+        
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <a href="#" onclick="showSection('createPost')">Create a Post</a>
+        <a href="#" onclick="showSection('myArchive')">My Archive</a>
+        <a href="#" onclick="showSection('myPosts')">My Posts</a>
+        <a href="#" onclick="showSection('viewMyPost')">View My Post</a>
+        <a href="#" onclick="showSection('myProfile')">My Profile</a>
+    </div>
+    <div class="content">
+        <section id="createPost" class="section">
+            <h1>Create a Post</h1>
+            <form action="/post" method="post">
+            <div class="post-form">
+              <input type="text" name="post" id="">
+                <button type="submit">Post</button>
+            </form>
+            </div>
+        </section>
+        <section id="myArchive" class="section" style="display:none;">
+            <h1>My Archive</h1>
+            <div class="posts" id="archivePosts">
+                <div class="post">Archived Post 1: Lorem ipsum dolor sit amet.</div>
+                <div class="post">Archived Post 2: Consectetur adipiscing elit.</div>
+                <div class="post">Archived Post 3: Integer nec odio.</div>
+            </div>
+        </section>
+        <section id="myPosts" class="section" style="display:none;">
+            <h1>My Posts</h1>
+            <div class="posts" id="myPostsContent">
+                <div class="post">My Post 1: Praesent libero.</div>
+                <div class="post">My Post 2: Sed cursus ante dapibus diam.</div>
+                <div class="post">My Post 3: Sed nisi.</div>
+            </div>
+        </section>
+        <section id="viewMyPost" class="section" >
+            <h1>View My Post</h1>
+          
+            <div class="posts" id="viewPostContent">
+                <%for(var i=0;i<posts.length;i++){%>
+                
+         <%if(user==postedby[i]){%>
+                
+
+                <div class="post"><%=postedby[i]%>: <%=posts[i]%></div>
+                <a href="/delPost/<%=i %>"><button>Delete</button></a>
+                <a href="/editPost/<%= i %>"><button>Edit</button></a>
+                <a href=""><button>Archive</button></a>
+<%}}%>
+                
+            </div>
+        
+        </section>
+        <section id="myProfile" class="section" style="display:none;">
+            <h1>My Profile</h1>
+            <div class="profile">
+                <p><strong>Name:</strong> John Doe</p>
+                <p><strong>Username:</strong> johndoe</p>
+                <p><strong>Email:</strong> johndoe@example.com</p>
+            </div>
+        </section>
+    </div>
+<section>
+    <div  class="logout"> <a href=""><button>logout</button></a></div>
+</section>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        .main {
+            padding: 20px;
+            background: #fff;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .btn {
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #555;
+        }
+        .btn-danger {
+            background: #e74c3c;
+        }
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>User Management</h1>
+        </div>
+    </header>
+    <div class="container main">
+        <h2>Current Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>john_doe</td>
+                    <td>john@example.com</td>
+                    <td>Active</td>
+                    <td>
+                        <button class="btn">Delete</button>
+                        <button class="btn btn-danger">Ban</button>
+                    </td>
+                </tr>
+                <% results1.forEach(function(result1, index) { %>
+                    <tr>
+                        <td><%=result1.username%></td>
+                        <td><%=result1.email%></td>
+                        <%if(result1.status==1){%>
+                        <td> Active</td>
+                       <%}%>
+                        <%if(result1.status==0){%>
+                            <td> Inactive</td>
+                            <%}%>
+                       
+                        <td>
+                            <a href="delUser/<%=result1.sn0%>"<button class="btn">Delete</button></a>
+                            <a href="banUser/<%=result1.sn0 %>"<button class="btn btn-danger">Ban</button></a>
+                        </td>
+                    </tr>
+                    <%})%>
+              
+                    
+                    
+                <!-- Add more users as needed -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        /* Internal CSS for styling and animations */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: #f5f8fa;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #1da1f2;
+            padding: 1rem;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .sidebar a {
+            display: block;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .content {
+            flex-grow: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        .content h1 {
+            color: #1da1f2;
+            margin-bottom: 1rem;
+        }
+        .posts, .users, .profile {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .post, .user {
+            border-bottom: 1px solid #ccc;
+            padding: 1rem 0;
+        }
+        .post:last-child, .user:last-child {
+            border-bottom: none;
+        }
+        .post .actions, .user .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+        .post button, .user button {
+            background: #1da1f2;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .post button:hover, .user button:hover {
+            background: #0d95e8;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <a href="#" onclick="showSection('usersPosts')">Users Posts</a>
+        <a href="#" onclick="showSection('manageUserPost')">Manage User Post</a>
+        <a href="#" onclick="showSection('banUsers')">Ban Users</a>
+        <a href="#" onclick="showSection('verifyUser')">Verify User</a>
+    </div>
+    <div class="content">
+        <section id="usersPosts" class="section">
+            <h1>Users</h1>
+            <div class="posts">
+                <div class="post">
+                    <p>User Post 1: Lorem ipsum dolor sit amet.</p>
+                    <div class="actions">
+                        <button onclick="editPost(this)">Edit</button>
+                        <button onclick="deletePost(this)">Delete</button>
+                    </div>
+                </div>
+                <% results1.forEach(function(result1, index) { %>
+                <div class="post">
+                    <p>@<%=result1.username%></p>
+                    <p><%=result1.name%></p>
+                    <div class="actions">
+                        <a href="/delUser/<%=result1.sn0%>"><button>Delete User</button></a>
+                        <a href="/banUser/<%=result1.sn0%>"><button>Ban</button></a>
+
+                    </div>
+                </div>
+            <%})%>
+            </div>
+        </section>
+        <section id="manageUserPost" class="section">
+            <h1>Manage User Post</h1>
+            
+            <div class="posts">
+                <% results.forEach(function(result, index) { %>
+                <div class="post">
+                    <p>@<%=result.postedby%>: <%=result.posts%></p>
+                    <div class="actions">
+                        <a href="/delPost/<%=result.si_n0%>"><button>Delete Post</button></a>
+                    </div>
+                    <%})%>
+                </div>
+            
+                
+        </section>
+        <section id="banUsers" class="section" style="display:none;">
+            <h1>Ban Users</h1>
+            <div class="users">
+                <div class="user">
+                    <p>User 1: johndoe@example.com</p>
+                    <div class="actions">
+                        <button onclick="banUser(this)">Ban</button>
+                        <button onclick="unbanUser(this)">Unban</button>
+                    </div>
+                </div>
+                <div class="user">
+                    <p>User 2: janedoe@example.com</p>
+                    <div class="actions">
+                        <button onclick="banUser(this)">Ban</button>
+                        <button onclick="unbanUser(this)">Unban</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="verifyUser" class="section" style="display:none;">
+            <h1>Verify User</h1>
+            <div class="users">
+                <div class="user">
+                    <p>User 1: johndoe@example.com</p>
+                    <div class="actions">
+                        <button onclick="verifyUser(this)">Verify</button>
+                        <button onclick="unverifyUser(this)">Unverify</button>
+                    </div>
+                </div>
+                <div class="user">
+                    <p>User 2: janedoe@example.com</p>
+                    <div class="actions">
+                        <button onclick="verifyUser(this)">Verify</button>
+                        <button onclick="unverifyUser(this)">Unverify</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        // Internal JavaScript for interactivity
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.style.display = 'none');
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function editPost(button) {
+            const postContent = button.parentElement.previousElementSibling;
+            const newContent = prompt('Edit post:', postContent.textContent);
+            if (newContent) {
+                postContent.textContent = newContent;
+            }
+        }
+
+        function deletePost(button) {
+            if (confirm('Are you sure you want to delete this post?')) {
+                button.parentElement.parentElement.remove();
+            }
+        }
+
+        function approvePost(button) {
+            alert('Post approved!');
+        }
+
+        function rejectPost(button) {
+            alert('Post rejected!');
+        }
+
+        function banUser(button) {
+            alert('User banned!');
+        }
+
+        function unbanUser(button) {
+            alert('User unbanned!');
+        }
+
+        function verifyUser(button) {
+            alert('User verified!');
+        }
+
+        function unverifyUser(button) {
+            alert('User unverified!');
+        }
+    </script>
+</body>
+</html>

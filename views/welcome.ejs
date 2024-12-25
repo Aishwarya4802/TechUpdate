@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to TClone</title>
+<style>
+  /* Base Styles */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #1DA1F2; /* Twitter Blue */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .container {
+    text-align: center;
+    max-width: 600px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #1DA1F2; /* Twitter Blue */
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: #666;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .button {
+    padding: 12px 24px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    background-color: #fff;
+    color: #1DA1F2; /* Twitter Blue */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .button:hover {
+    background-color: #1DA1F2; /* Twitter Blue */
+    color: #fff;
+  }
+
+  .login-form {
+    display: none;
+    margin-top: 20px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .show-login {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Twitter-like Bird Image */
+  .twitter-bird {
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 200px;
+    opacity: 0.2;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- <img src="logo.jpg" alt="Twitter Bird" class="twitter-bird"> -->
+  <h1>Welcome to TClone</h1>
+  <p>Your social community</p>
+  
+  <div class="buttons">
+    <form action="/log" method="post">
+    <button class="button" type="submit">Login</button>
+    </form>
+    <form action="/signup" method="post">
+    <button class="button" type="submit">Sign Up</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrong Password</title>
+    <style>
+        /* Internal CSS for styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease; /* Transition effect */
+        }
+        
+        h1 {
+            color: #f44336;
+        }
+        
+        p {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .container:hover {
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Wrong Password</h1>
+        <p>The password you entered is incorrect. Please try again.</p>
+        <button onclick="window.history.back();">Go Back</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tClone - Your Microblogging Platform</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: #1da1f2;
+            color: white;
+        }
+
+        .brand h1 {
+            font-size: 1.8rem;
+        }
+
+        .search input[type="text"] {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            margin-right: 0.5rem;
+        }
+
+        .search button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+
+        .main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .user-posts {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .user-posts h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .post {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-header img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+
+        .post-header .username {
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .post-header .timestamp {
+            color: #888;
+            font-size: 0.8rem;
+        }
+
+        .post-content {
+            padding-left: 40px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav>
+        <div class="container">
+            <div class="brand">
+                <h1>tClone</h1>
+            </div>
+            <div class="search">
+                <form action="/search" method="post">
+                    <input type="text" id="searchInput" name="text" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <!-- <div id="searchResults">
+                 Search results will be displayed here -->
+            <!-- </div>  -->
+            <div class="profile">
+                <img src="profile-picture.jpg" alt="Your Profile Picture">
+                <span>Your Name</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content area -->
+    <main>
+        <section class="user-posts">
+            <h2>All Posts by user-posts</h2>
+            <% results.forEach(function(result, index) { %>
+            <div class="post">
+                <div class="post-header">
+                    <img src="profile-picture.jpg" alt="Profile Picture">
+                    <span class="username">@<%= result.postedby %></span>
+                    <span class="timestamp"><%= result.postedTime %> ago.</span>
+                </div>
+                <div class="post-content">
+                    <p><%= result.posts %></p>
+                </div>
+                <div class="like-button">
+                    <!-- Use an anchor tag to simulate a GET request -->
+                    <a href="/like/<%= index %>">
+                        <button style="background:none; border:none; cursor:pointer;">
+                            <%= result.likes %> ❤
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <% }); %>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 tClone. All rights reserved.</p>
+    </footer>
+</body>
+</html>

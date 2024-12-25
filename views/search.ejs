@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitter Clone - User Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f8fa;
+      color: #14171a;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    form {
+      margin: 20px 0;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #e1e8ed;
+      border-radius: 4px;
+      width: 300px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #1da1f2;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0d95e8;
+    }
+
+    #results {
+      list-style-type: none;
+      padding: 0;
+      width: 300px;
+    }
+
+    #results li {
+      background-color: #fff;
+      border: 1px solid #e1e8ed;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Users</h1>
+  <form action="/search" method="post">
+    <input type="text" name="search" placeholder="Enter name or handle" required>
+    <button type="submit">Search</button>
+  </form>
+  
+  
+  
+  <h2>Search Results</h2>
+  
+  
+  
+    <!-- Dummy search results for demonstration -->
+   
+      
+        <% for(var i=0; i<acc.length; i++) { %>
+          <ul id="results"></ul>
+          <li>username= @ <%=acc[i]%></li>
+        </ul>
+        <%}%> 
+</body>
+</html>

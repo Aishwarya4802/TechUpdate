@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        /* Internal CSS for styling and animations */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        .registration-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .registration-container h2 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        .registration-container input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .registration-container button {
+            width: 100%;
+            padding: 0.75rem;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+        .registration-container button:hover {
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <form action="/reg" method="post">
+    <div class="registration-container">
+        <h2>Register</h2>
+        <input name="name" type="text" id="name" placeholder="Name" required>
+        <input name="email" type="email" id="email" placeholder="Email" required>
+        <input name="uname" type="text" id="username" placeholder="Username" required>
+        <input name="pwd" type="password" id="password" placeholder="Password" required>
+        <input name="cpwd" type="password" id="confirmPassword" placeholder="Confirm Password" required>
+        <button type="submit">Register</button>
+    </div>
+   </form>
+</body>
+</html>

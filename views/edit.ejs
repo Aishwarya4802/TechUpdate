@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f8fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        .container h1 {
+            color: #1da1f2;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .container label {
+            color: #657786;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .container textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccd6dd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        .container button {
+            background-color: #1da1f2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .container button:hover {
+            background-color: #0d8ddb;
+        }
+        .container .cancel-button {
+            background-color: #e0245e;
+            margin-top: 10px;
+        }
+        .container .cancel-button:hover {
+            background-color: #c21a4b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Post</h1>
+        <form action="/editPost" method="POST">
+            <label for="post-content">Edit your post:</label>
+            <input type="hidden" value ="<%=index%>" name="index">
+           <input type ="text" value="<%=post%>" name="postchange">
+           <br><br>
+            <button type="submit">Save Changes</button>
+        </form>
+        <button class="cancel-button" onclick="window.location.href='home.html'">Cancel</button>
+    </div>
+</body>
+</html>
